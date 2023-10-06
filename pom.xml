@@ -19,10 +19,11 @@
     </parent>
     <groupId>com.zh</groupId>
     <artifactId>awe</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${awe.version}</version>
     <name>awe</name>
     <description>基于jdk17 springboot3.x 框架基础包</description>
     <properties>
+        <awe.version>0.0.1</awe.version>
         <java.version>17</java.version>
         <jdk.version>17</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

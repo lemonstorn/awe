@@ -5,10 +5,9 @@
 	<parent>
 		<groupId>com.zh</groupId>
 		<artifactId>awe</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
 	<artifactId>awe-common</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>awe-common</name>
 	<description>基于jdk17 springboot3.x 框架基础包</description>
 	<properties>
