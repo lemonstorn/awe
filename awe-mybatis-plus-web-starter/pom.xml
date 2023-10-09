@@ -25,12 +25,12 @@
         <dependency>
             <groupId>com.zh</groupId>
             <artifactId>awe-mybatis-plus-starter</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${awe.version}</version>
         </dependency>
         <dependency>
             <groupId>com.zh</groupId>
             <artifactId>awe-security-starter</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${awe.version}</version>
         </dependency>
     </dependencies>
 
