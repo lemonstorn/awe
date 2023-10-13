@@ -10,20 +10,21 @@
         <module>awe-security-starter</module>
         <module>awe-mybatis-plus-web-starter</module>
         <module>awe-oss-starter</module>
+        <module>awe-springcloud-starter</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>3.0.11</version>
+        <relativePath/>
     </parent>
     <groupId>com.zh</groupId>
     <artifactId>awe</artifactId>
-    <version>${awe.version}</version>
+    <version>0.0.2-snapshot</version>
     <name>awe</name>
     <description>基于jdk17 springboot3.x 框架基础包</description>
     <properties>
-        <awe.version>0.0.1</awe.version>
+        <awe.version>0.0.2-snapshot</awe.version>
         <java.version>17</java.version>
         <jdk.version>17</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -37,9 +38,46 @@
         <easyexcel.version>3.3.2</easyexcel.version>
         <aws.java.sdk.version>2.20.43</aws.java.sdk.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <spring-cloud.version>2022.0.0.0-RC2</spring-cloud.version>
+        <dubbo.version>3.2.7</dubbo.version>
     </properties>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.zh</groupId>
+                <artifactId>awe-common</artifactId>
+                <version>${awe.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zh</groupId>
+                <artifactId>awe-web-starter</artifactId>
+                <version>${awe.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zh</groupId>
+                <artifactId>awe-mybatis-plus-starter</artifactId>
+                <version>${awe.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zh</groupId>
+                <artifactId>awe-security-starter</artifactId>
+                <version>${awe.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zh</groupId>
+                <artifactId>awe-mybatis-plus-web-starter</artifactId>
+                <version>${awe.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zh</groupId>
+                <artifactId>awe-oss-starter</artifactId>
+                <version>${awe.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zh</groupId>
+                <artifactId>awe-springcloud-starter</artifactId>
+                <version>${awe.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
@@ -96,6 +134,18 @@
                 <groupId>org.reflections</groupId>
                 <artifactId>reflections</artifactId>
                 <version>${reflection.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

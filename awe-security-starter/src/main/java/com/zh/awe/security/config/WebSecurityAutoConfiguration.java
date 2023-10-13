@@ -54,8 +54,8 @@ public class WebSecurityAutoConfiguration {
         http.authorizeHttpRequests(WebBeanFactory.getBean(CustomAuthorizeHttpRequestsHandler.class));
         //登陆
         addFilters(http);
+        // 自己拓展登录接口
         http.userDetailsService(WebBeanFactory.getBean(UserDetailsService.class));
-//        http.addFilterAt(defaultCustomFilter, UsernamePasswordAuthenticationFilter.class);
         //登出
         http.logout(WebBeanFactory.getBean(LogoutHandler.class));
         //csrf验证 存储到Cookie中
@@ -68,6 +68,8 @@ public class WebSecurityAutoConfiguration {
 
         return http.build();
     }
+
+    //region 过滤器链条上的默认处理
 
     /**
      * 请求设置
@@ -110,6 +112,7 @@ public class WebSecurityAutoConfiguration {
     public AuthenticationSuccessHandler getCustomAuthenticationSuccessHandlerConfigurer(){
         return new LoginSuccessHandler();
     }
+    //endregion
 
     /**
      * 根据自定义过滤器配置插入到过滤器链中

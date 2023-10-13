@@ -6,6 +6,7 @@ import com.zh.awe.web.exception.ExceptionAutoConfiguration;
 import com.zh.awe.web.factory.WebBeanFactory;
 import com.zh.awe.web.web.WebAutoConfiguration;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.annotation.Order;
 
 import java.lang.annotation.*;
 
@@ -21,5 +22,6 @@ import java.lang.annotation.*;
 @Documented
 @Import({ExceptionAutoConfiguration.class, WebAutoConfiguration.class, WebBeanFactory.class,
         DruidDataSourceAutoConfig.class, JacksonAutoConfig.class})
+@Order(1000)
 public @interface EnableAweWeb {
 }
