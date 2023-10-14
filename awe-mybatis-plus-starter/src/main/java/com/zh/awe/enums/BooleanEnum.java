@@ -36,7 +36,6 @@ public enum BooleanEnum implements BaseEnum<BooleanEnum> {
     }
 
     @Override
-    @JsonValue
     public String getName() {
         return this.name;
     }
