@@ -1,7 +1,6 @@
 package com.zh.awe.annotation;
 
 import com.zh.awe.config.FieldMetaObjectHandler;
-import com.zh.awe.security.annotation.EnableAweSecurity;
 import com.zh.awe.web.annotation.EnableAweWeb;
 import org.springframework.context.annotation.Import;
 
@@ -15,7 +14,6 @@ import java.lang.annotation.*;
 @Documented
 @Import(FieldMetaObjectHandler.class)
 @EnableAweJdbc
-@EnableAweSecurity
 @EnableAweWeb
 public @interface EnableAweJdbcAll {
 }
