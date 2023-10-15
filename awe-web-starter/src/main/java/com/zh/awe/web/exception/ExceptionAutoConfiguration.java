@@ -30,12 +30,20 @@ import java.util.Set;
 @AllArgsConstructor
 public class ExceptionAutoConfiguration {
     private ExceptionProperties exceptionProperties;
+    @ResponseBody
+    @ExceptionHandler(value = LoginTimeOutException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public R<String> handleLogTimeOutException(LoginTimeOutException e) {
+        return R.error(e.getMessage());
+    }
 
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public R<String> handleException(Exception e) {
-        if (e instanceof AweBaseException bootCustomException) {
+        if (e instanceof LoginTimeOutException loginTimeOutException) {
+            return R.error(HttpStatus.UNAUTHORIZED.value(),loginTimeOutException.getMessage());
+        } else if (e instanceof AweBaseException bootCustomException) {
             return R.error(bootCustomException.getMessage());
         } else if (e instanceof BindException) {
             BindingResult result = ((BindException) e).getBindingResult();

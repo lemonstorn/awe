@@ -20,17 +20,17 @@
         <dependency>
             <groupId>com.zh</groupId>
             <artifactId>awe-web-starter</artifactId>
-            <version>${awe.version}</version>
+            <version>${awe-web.version}</version>
         </dependency>
         <dependency>
             <groupId>com.zh</groupId>
             <artifactId>awe-mybatis-plus-starter</artifactId>
-            <version>${awe.version}</version>
+            <version>${awe-mp.version}</version>
         </dependency>
         <dependency>
             <groupId>com.zh</groupId>
             <artifactId>awe-security-starter</artifactId>
-            <version>${awe.version}</version>
+            <version>${awe-security.version}</version>
         </dependency>
     </dependencies>
 

@@ -1,9 +1,9 @@
 package com.zh.awe.web.controller;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.zh.awe.common.enums.BaseEnum;
 import com.zh.awe.common.model.R;
 import com.zh.awe.common.utils.EnumUtils;
-import com.zh.awe.common.utils.StringUtils;
 import com.zh.awe.web.web.WebProperties;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
@@ -28,21 +28,26 @@ public class AweCommonController {
     @PostConstruct
     @SuppressWarnings({"rawtypes"})
     public void init(){
-        String enumPath = webProperties.getEnumPath();
-        if (ENUM_MAP.isEmpty() && StringUtils.isNotBlank(enumPath)){
-            int length = enumPath.length()+1;
-            //获取该路径下所有类
-            Reflections reflections = new Reflections(enumPath);
-            //获取继承了ISuperClass的所有类
-            Set<Class<? extends BaseEnum>> classSet = reflections.getSubTypesOf(BaseEnum.class);
+        List<String> enumPath = webProperties.getEnumPath();
+        if (ENUM_MAP.isEmpty() && CollectionUtil.isNotEmpty(enumPath)){
+            enumPath.add("com.zh.awe.enums");
+            enumPath.stream()
+                    .distinct()
+                    .forEach(path->{
+                        int length = path.length()+1;
+                        //获取该路径下所有类
+                        Reflections reflections = new Reflections(path);
+                        //获取继承了ISuperClass的所有类
+                        Set<Class<? extends BaseEnum>> classSet = reflections.getSubTypesOf(BaseEnum.class);
 
-            for (Class<? extends BaseEnum> clazz : classSet){
-                // 实例化获取到的类
-                if (clazz.isEnum()){
-                    List<Map<String, Object>> mapList = EnumUtils.enumToListMap(clazz);
-                    ENUM_MAP.put(clazz.getName().substring(length),mapList);
-                }
-            }
+                        for (Class<? extends BaseEnum> clazz : classSet){
+                            // 实例化获取到的类
+                            if (clazz.isEnum()){
+                                List<Map<String, Object>> mapList = EnumUtils.enumToListMap(clazz);
+                                ENUM_MAP.put(clazz.getName().substring(length),mapList);
+                            }
+                        }
+                    });
         }
     }
 

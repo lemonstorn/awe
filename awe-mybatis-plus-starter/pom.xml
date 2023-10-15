@@ -13,7 +13,7 @@
         <dependency>
             <groupId>com.zh</groupId>
             <artifactId>awe-common</artifactId>
-            <version>${awe.version}</version>
+            <version>${awe-common.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>

@@ -1,5 +1,12 @@
 package com.zh.awe.security.util;
 
+import com.zh.awe.common.utils.JsonUtils;
+import com.zh.awe.common.utils.StringUtils;
+import com.zh.awe.security.config.WebSecurityProperties;
+import com.zh.awe.security.enums.SecureModel;
+import com.zh.awe.security.model.JwtUser;
+import com.zh.awe.web.exception.LoginTimeOutException;
+import com.zh.awe.web.factory.WebBeanFactory;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -34,11 +41,30 @@ public class SpringSecurityUtil {
 
     /**
      * 获取当前登录用户名
-     *
-     * @return 当前登录用户名
      */
     public static String getCurrentUsername() {
         return SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+    }
+
+    /**
+     * 获取当前登录用户
+     *
+     * @return 当前登录用户
+     */
+    public static <T> T getCurrentUser(Class<T> clazz) {
+        String userDetail = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        if (StringUtils.isBlank(userDetail) || !isLogin()){
+            throw new LoginTimeOutException();
+        }
+        WebSecurityProperties securityProperties = WebBeanFactory.getBean(WebSecurityProperties.class);
+        if (SecureModel.JWT.getCode().equals(securityProperties.getModel().toUpperCase())){
+            JwtUser jwtUser = JsonUtils.jsonToPojo(userDetail, JwtUser.class);
+            assert jwtUser != null;
+            String user = JwtTokenUtil.getUser(securityProperties, jwtUser.getToken());
+            return JsonUtils.jsonToPojo(user, clazz);
+        } else {
+            return JsonUtils.jsonToPojo(userDetail, clazz);
+        }
     }
 
     /**

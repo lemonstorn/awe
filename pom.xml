@@ -24,7 +24,13 @@
     <name>awe</name>
     <description>基于jdk17 springboot3.x 框架基础包</description>
     <properties>
-        <awe.version>0.0.2-snapshot</awe.version>
+        <awe-common.version>0.0.2-snapshot</awe-common.version>
+        <awe-web.version>0.0.2-snapshot</awe-web.version>
+        <awe-mp.version>0.0.2-snapshot</awe-mp.version>
+        <awe-security.version>0.0.2-snapshot</awe-security.version>
+        <awe-weball.version>0.0.2-snapshot</awe-weball.version>
+        <awe-oss.version>0.0.2-snapshot</awe-oss.version>
+        <awe-cloud.version>0.0.2-snapshot</awe-cloud.version>
         <java.version>17</java.version>
         <jdk.version>17</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,43 +46,45 @@
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <spring-cloud.version>2022.0.0.0-RC2</spring-cloud.version>
         <dubbo.version>3.2.7</dubbo.version>
+        <jwt.version>0.11.5</jwt.version>
+        <bcprov-jdk18on.version>1.76</bcprov-jdk18on.version>
     </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.zh</groupId>
                 <artifactId>awe-common</artifactId>
-                <version>${awe.version}</version>
+                <version>${awe-common.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.zh</groupId>
                 <artifactId>awe-web-starter</artifactId>
-                <version>${awe.version}</version>
+                <version>${awe-web.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.zh</groupId>
                 <artifactId>awe-mybatis-plus-starter</artifactId>
-                <version>${awe.version}</version>
+                <version>${awe-mp.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.zh</groupId>
                 <artifactId>awe-security-starter</artifactId>
-                <version>${awe.version}</version>
+                <version>${awe-security.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.zh</groupId>
                 <artifactId>awe-mybatis-plus-web-starter</artifactId>
-                <version>${awe.version}</version>
+                <version>${awe-weball.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.zh</groupId>
                 <artifactId>awe-oss-starter</artifactId>
-                <version>${awe.version}</version>
+                <version>${awe-oss.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.zh</groupId>
                 <artifactId>awe-springcloud-starter</artifactId>
-                <version>${awe.version}</version>
+                <version>${awe-cloud.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
@@ -147,6 +155,29 @@
                 <artifactId>dubbo-spring-boot-starter</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
+            <!-- jwt -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-gson</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <!-- 国密加密算法 -->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk18on</artifactId>
+                <version>${bcprov-jdk18on.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
